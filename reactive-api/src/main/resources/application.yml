@@ -1,0 +1,17 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  sql:
+    init:
+      separator: \n
+      mode: always
+      schema-locations:
+        - classpath:schema.sql
+  r2dbc:
+    name: 'ppl_persistence'
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:pessoas}
+    url: ${DATABASE_JDBC_URL:r2dbc:postgresql://localhost:5432/people}
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
